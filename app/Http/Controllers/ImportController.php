@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Linea;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\LineaImport;
 
-class LineaController extends Controller
+class ImportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('linea.index');
+        return view('import.index');
     }
 
     /**
@@ -34,7 +35,7 @@ class LineaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Linea $linea)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +43,7 @@ class LineaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Linea $linea)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +51,7 @@ class LineaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Linea $linea)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,13 +59,16 @@ class LineaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Linea $linea)
+    public function destroy(string $id)
     {
         //
     }
 
-    public function listLinea(){
-        $data = Linea::where('status', 'VALID')->get();
-        return response()->json($data, 200);
+    public function import_linea(Request $request){
+        $file = $request->file('documento_line');
+
+        Excel::import(new LineaImport, $file);
+
+        return redirect()->back()->with('success', 'Archivo importado exitosamente.');
     }
 }
