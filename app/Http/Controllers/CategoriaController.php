@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Linea;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class LineaController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('linea.index');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class LineaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Linea $linea)
+    public function show(Categoria $categoria)
     {
         //
     }
@@ -42,7 +42,7 @@ class LineaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Linea $linea)
+    public function edit(Categoria $categoria)
     {
         //
     }
@@ -50,7 +50,7 @@ class LineaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Linea $linea)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
@@ -58,14 +58,8 @@ class LineaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Linea $linea)
+    public function destroy(Categoria $categoria)
     {
         //
-    }
-
-    public function listLinea(){
-        $data = Linea::where('status', 'VALID')->paginate(10);
-        
-        return response()->json($data, 200);
     }
 }

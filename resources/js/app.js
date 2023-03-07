@@ -22,6 +22,9 @@ app.component('example-component', ExampleComponent);
 import linea from './components/Linea/index.vue';
 app.component('linea', linea);
 
+import linea2 from './components/Linea/index2.vue';
+app.component('linea2', linea2);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

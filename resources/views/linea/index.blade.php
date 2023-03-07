@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<linea></linea>
+<linea2></linea2>
 @endsection
 
 @section('footer')
